@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 33% 99%;
+    --foreground: 222 47% 11%;
+
+    --paper: 0 0% 100%;
+    --paper-cream: 42 38% 97%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 218 87% 64%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-violet: 243 100% 71%;
+    --primary-foreground-violet: 0 0% 100%;
+
+    --secondary: 38 100% 87%;
+    --secondary-foreground: 222 47% 11%;
+
+    --accent: 160 93% 43%;
+    --accent-foreground: 0 0% 100%;
+
+    --mint: 189 65% 71%;
+    --mint-foreground: 200 71% 20%;
+
+    --pink: 333 87% 74%;
+    --pink-foreground: 333 71% 20%;
+
+    --coral: 16 100% 69%;
+    --coral-foreground: 16 91% 20%;
+
+    --muted: 40 33% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 36 100% 50%;
+    --warning-foreground: 30 80% 15%;
+
+    --error: 4 89% 64%;
+    --error-foreground: 0 0% 100%;
+
+    --destructive: 4 89% 64%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 42 33% 90%;
+    --input: 42 33% 90%;
+    --ring: 218 87% 64%;
+
+    --chart-1: 218 87% 64%;
+    --chart-2: 243 100% 71%;
+    --chart-3: 160 93% 43%;
+    --chart-4: 38 100% 62%;
+    --chart-5: 333 87% 74%;
+
+    --radius: 1rem;
+    --radius-lg: 1.25rem;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 40 33% 96%;
+
+    --paper: 222 40% 13%;
+    --paper-cream: 222 36% 16%;
+
+    --card: 222 40% 13%;
+    --card-foreground: 40 33% 96%;
+
+    --popover: 222 40% 13%;
+    --popover-foreground: 40 33% 96%;
+
+    --primary: 218 87% 64%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-violet: 243 100% 71%;
+    --primary-foreground-violet: 0 0% 100%;
+
+    --secondary: 38 60% 35%;
+    --secondary-foreground: 40 33% 96%;
+
+    --accent: 160 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --mint: 189 50% 45%;
+    --mint-foreground: 189 60% 90%;
+
+    --pink: 333 70% 55%;
+    --pink-foreground: 333 60% 95%;
+
+    --coral: 16 80% 55%;
+    --coral-foreground: 16 70% 95%;
+
+    --muted: 222 30% 22%;
+    --muted-foreground: 40 15% 65%;
+
+    --success: 160 70% 42%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 36 90% 55%;
+    --warning-foreground: 30 80% 15%;
+
+    --error: 4 80% 60%;
+    --error-foreground: 0 0% 100%;
+
+    --destructive: 4 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 30% 25%;
+    --input: 222 30% 25%;
+    --ring: 218 87% 64%;
+
+    --chart-1: 218 87% 64%;
+    --chart-2: 243 100% 71%;
+    --chart-3: 160 70% 45%;
+    --chart-4: 38 90% 55%;
+    --chart-5: 333 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(circle at 20% 8%, hsl(218 87% 64% / 0.06), transparent 40%),
+      radial-gradient(circle at 85% 20%, hsl(243 100% 71% / 0.05), transparent 42%),
+      radial-gradient(circle at 50% 95%, hsl(160 93% 43% / 0.05), transparent 45%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at 20% 8%, hsl(218 87% 64% / 0.10), transparent 40%),
+      radial-gradient(circle at 85% 20%, hsl(243 100% 71% / 0.08), transparent 42%),
+      radial-gradient(circle at 50% 95%, hsl(160 93% 43% / 0.08), transparent 45%);
+  }
+
+  ::selection {
+    background-color: hsl(218 87% 64% / 0.25);
+  }
+}
+
+/* Subtle paper grain texture overlay */
+.paper-grain {
+  position: relative;
+}
+.paper-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.25'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.dark .paper-grain::after {
+  opacity: 0.15;
+  mix-blend-mode: screen;
+}
+
+.font-display {
+  font-family: var(--font-poppins), var(--font-nunito), sans-serif;
+}
+
+/* Hand-drawn underline accent */
+.doodle-underline {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 120 12' xmlns='http://www.w3.org/2000/svg' fill='none'%3E%3Cpath d='M2 9c25-5 65-5 116 0' stroke='%23FFB703' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 100% 0.4em;
+  padding-bottom: 0.15em;
+}
